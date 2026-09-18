@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dispatchlab-rl"
+version = "0.2.0"
+description = "An explainable reinforcement-learning sandbox for last-mile dispatch"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.7,<4", "Pillow>=10"]
+gym = ["gymnasium>=1.0,<2"]
+advanced = ["torch>=2.5,<3", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1"]
+
+[tool.setuptools.packages.find]
+include = ["dispatchlab*"]

@@ -1,0 +1,5 @@
+# Versions used for the bundled results (Python 3.12).
+numpy==2.3.5
+matplotlib==3.10.8
+Pillow==12.3.0
+gymnasium==1.2.3

@@ -1,0 +1,10 @@
+# Tested direct dependencies for Fleet v2 on Python 3.12.
+# Install the CPU-only Torch wheel separately as shown in README.md if preferred.
+numpy==2.3.5
+torch==2.5.1
+fastapi==0.115.12
+uvicorn==0.34.2
+httpx==0.28.1
+matplotlib==3.10.8
+Pillow==12.3.0
+gymnasium==1.2.3
