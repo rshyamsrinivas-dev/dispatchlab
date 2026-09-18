@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DispatchLab · Watch the decisions</title>
+<style>
+:root{--ink:#122d37;--muted:#577078;--green:#0b725d;--mint:#ddf4e8;--paper:#f5f7f2;--line:#d4ded9;--orange:#c56c3b}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font:15px/1.5 system-ui,-apple-system,sans-serif;color:var(--ink)}main{max-width:1240px;margin:auto;padding:34px 28px 50px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-size:22px;font-weight:800;letter-spacing:-.7px}.tag{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--green);font-weight:700}.pill{border:1px solid var(--line);border-radius:30px;padding:7px 13px;font-size:12px}.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:35px;padding:30px 0 22px}h1{font-size:42px;line-height:1.07;letter-spacing:-1.8px;margin:8px 0 15px}p{margin:8px 0;color:var(--muted)}.hero p{max-width:560px}.callout{padding:20px;border-radius:15px;background:var(--ink);color:white;align-self:center}.callout strong{font-size:30px;color:#9aefc5}.callout p{color:#bed1d1;font-size:13px}.controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:12px 0 20px}label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--muted)}select,button{font:inherit;color:var(--ink);border:1px solid var(--line);padding:10px 12px;border-radius:8px;background:white;margin-top:5px}button{cursor:pointer}button.primary{background:var(--green);color:white;border-color:var(--green);min-width:95px}.scrub{display:flex;gap:12px;align-items:center;flex:1;min-width:200px}input{accent-color:var(--green);width:100%}.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px;gap:8px}.panel-head select{max-width:210px;font-weight:700;margin:0}.status{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);padding:5px 20px 12px;gap:10px}.metrics b{display:block;font-size:25px;font-weight:750}.metrics span{font-size:11px;color:var(--muted)}canvas{display:block;width:100%;height:260px;background:#f7faf7}.action{padding:10px 18px;background:var(--mint);font-size:12px;font-weight:700}.orders{padding:12px 18px;min-height:190px}.order{display:flex;justify-content:space-between;border-bottom:1px solid #edf0ed;padding:6px 0;font-size:12px}.order:last-child{border:0}.late{color:#b23b29}.empty{color:var(--muted);font-size:13px;padding:25px 0}.legend{font-size:12px;margin:10px 0 28px;color:var(--muted)}section{margin-top:30px}h2{font-size:23px;letter-spacing:-.5px;margin:0 0 5px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin-top:15px;font-size:13px}th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.7px}.learned{background:var(--mint);font-weight:700}.notes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding-top:22px;font-size:13px}.notes b{display:block;margin-bottom:5px}footer{font-size:12px;color:var(--muted);padding-top:30px}.tick{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f7b66b;outline-offset:3px}@media(max-width:740px){main{padding:18px 14px}.hero,.panels,.notes{grid-template-columns:1fr}.hero{gap:12px}h1{font-size:34px}.callout{padding:14px}.pill{font-size:10px}.panel-head select{max-width:200px}.scrub{flex-basis:100%}.status{font-size:11px}}
+</style>
+</head>
+<body><main>
+<header><div class="brand">DispatchLab<span style="color:var(--green)"> / RL</span></div><div class="pill">A small world. Consequential decisions.</div></header>
+<div class="hero"><div><div class="tag">Last-mile dispatch · Learning by doing</div><h1>Leave now.<br>Batch first. Or head back?</h1><p>One vehicle, three neighbourhoods, and orders that keep arriving. Watch a learned dispatch policy and a simple rule make different choices on the same shift.</p></div><div class="callout"><div class="tag" style="color:#9aefc5">Held-out standard scenario</div><strong id="headline"></strong><p id="headline-sub"></p><p>Measured in this personal project using synthetic delivery data.</p></div></div>
+<div class="controls"><div><label for="scenario">Operating conditions</label><select id="scenario"><option value="standard">Standard demand</option><option value="demand_surge">Demand surge</option><option value="tight_deadlines">Tighter deadlines</option></select></div><div><label for="seed">Replay shift</label><select id="seed"><option value="200001">Shift 01</option><option value="200002">Shift 02</option><option value="200003">Shift 03</option></select></div><button id="play" class="primary">Play</button><button id="restart" aria-label="Restart replay">Restart</button><div class="scrub"><input id="slider" aria-label="Simulation tick" type="range" min="0" max="48" value="0"><span class="tick" id="time">00 / 48</span></div></div>
+<div class="panels" id="panels"></div>
+<div class="legend">● Depot and delivery locations &nbsp; ◆ Vehicle &nbsp; ··· Direct travel links &nbsp; | &nbsp; All replays use frozen policies and precomputed simulator outputs.</div>
+<section><div class="tag">The full benchmark</div><h2>One replay is an example. These are the averages.</h2><p id="benchmark-sub"></p><div class="table-wrap"><table><thead><tr><th>Policy</th><th>Reward / shift</th><th>On-time / requested</th><th>Completed / requested</th><th>Travel / delivery</th></tr></thead><tbody id="results"></tbody></table></div></section>
+<div class="notes"><div><b>01 / What the agent sees</b><p>Current location, time left, loaded parcels and waiting orders. It never sees future arrivals.</p></div><div><b>02 / What it learns</b><p>A small linear Q-function scores waiting, returning, and feasible delivery stops. The weights are learned through simulated experience.</p></div><div><b>03 / What this leaves out</b><p>Traffic, uncertain travel times, multiple vehicles, charging, service times, and real geography. Reward points are not money.</p></div></div>
+<footer>DispatchLab · Reproducible NumPy experiments · Three independent training runs · Replay seeds fixed before evaluation · Open README.md for setup, methodology, and limitations.</footer>
+</main>
+<script id="payload" type="application/json">__PAYLOAD__</script>
+<script>
+"use strict";
+const DATA=JSON.parse(document.getElementById('payload').textContent);
+const $=id=>document.getElementById(id), names=['Depot','North','East','South'];
+const pts=[[250,125],[130,55],[400,100],[270,218]], travel=[[0,3,2,2],[3,0,4,5],[2,4,0,3],[2,5,3,0]];
+const options=['Learned policy','Nearest delivery','Earliest deadline','Tuned batching'];
+let tick=0,timer=null;
+for(let i=0;i<2;i++){
+ const panel=document.createElement('div');panel.className='panel';
+ panel.innerHTML=`<div class="panel-head"><select id="policy${i}" aria-label="Policy in panel ${i+1}">${options.map(x=>`<option>${x}</option>`).join('')}</select><span class="status" id="status${i}"></span></div><div class="metrics" id="metrics${i}"></div><canvas id="map${i}" width="1000" height="520" role="img" aria-label="Delivery vehicle and locations"></canvas><div class="action" id="action${i}"></div><div class="orders" id="orders${i}"></div>`;
+ $('panels').appendChild(panel);$('policy'+i).value=i===0?'Learned policy':'Earliest deadline';$('policy'+i).onchange=render;
+}
+function replay(i){return DATA.replays[$('scenario').value+'|'+$('seed').value+'|'+$('policy'+i).value]}
+function draw(i,f){
+ const c=$('map'+i).getContext('2d');c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,500,260);
+ c.strokeStyle='#dce6df';c.lineWidth=1;c.setLineDash([4,5]);
+ for(let a=0;a<4;a++)for(let b=a+1;b<4;b++){c.beginPath();c.moveTo(...pts[a]);c.lineTo(...pts[b]);c.stroke()}
+ c.setLineDash([]);
+ for(let n=0;n<4;n++){
+  const [x,y]=pts[n];c.beginPath();c.fillStyle=n===0?'#122d37':'#d8eadf';c.arc(x,y,14,0,2*Math.PI);c.fill();c.fillStyle=n===0?'white':'#122d37';c.font='bold 12px system-ui';c.textAlign='center';c.fillText(n===0?'D':names[n][0],x,y+4);
+  c.font='12px system-ui';c.fillStyle='#577078';c.fillText(names[n],x,y+31);
+  const count=f.orders.filter(o=>n===0?!o.status:o.dest===n&&o.status).length;
+  if(count){c.beginPath();c.fillStyle='#c56c3b';c.arc(x+15,y-13,9,0,Math.PI*2);c.fill();c.fillStyle='white';c.font='bold 10px system-ui';c.fillText(count,x+15,y-10)}
+ }
+ let [x,y]=pts[f.location];
+ if(f.travel_remaining){const [tx,ty]=pts[f.target],progress=1-f.travel_remaining/travel[f.location][f.target];c.beginPath();c.strokeStyle='#0b725d';c.lineWidth=3;c.moveTo(x,y);c.lineTo(tx,ty);c.stroke();x+=(tx-x)*progress;y+=(ty-y)*progress}
+ c.save();c.translate(x,y-5);c.rotate(Math.PI/4);c.fillStyle='#0b725d';c.strokeStyle='white';c.lineWidth=3;c.fillRect(-8,-8,16,16);c.strokeRect(-8,-8,16,16);c.restore();
+ $('map'+i).setAttribute('aria-label',`Tick ${tick}. Vehicle ${f.travel_remaining?'travelling to '+names[f.target]:'at '+names[f.location]}. ${f.metrics.delivered} delivered.`);
+}
+function render(){
+ $('time').textContent=String(tick).padStart(2,'0')+' / 48';$('slider').value=tick;
+ for(let i=0;i<2;i++){
+  const f=replay(i).frames[tick],m=f.metrics;draw(i,f);
+  $('status'+i).textContent=f.travel_remaining?'En route · '+f.travel_remaining+' ticks':'At '+names[f.location];
+  $('metrics'+i).innerHTML=`<div><b>${m.delivered}/${m.requests}</b><span>Delivered / requested</span></div><div><b>${m.on_time}</b><span>On time so far</span></div><div><b>${m.reward.toFixed(1)}</b><span>Reward points</span></div>`;
+  $('action'+i).textContent=tick===48?'Shift complete · '+m.unfinished+' unfinished · '+m.rejected+' rejected':f.travel_remaining?'Travelling to '+names[f.target]+' · next decision on arrival':f.action;
+  $('orders'+i).innerHTML=f.orders.length?'<label>Active parcels · '+f.orders.length+'/5</label>'+f.orders.map(o=>`<div class="order"><span>#${o.id+1} → ${names[o.dest]} · ${o.status?'Onboard':'At depot'}</span><span class="${o.deadline<tick?'late':''}">${o.deadline<tick?(tick-o.deadline)+' ticks late':'Due in '+(o.deadline-tick)}</span></div>`).join(''):'<div class="empty">No active parcels. New orders may arrive before tick 36.</div>';
+ }
+ const rows=DATA.results.summary[$('scenario').value],labels={nearest:'Nearest delivery',deadline:'Earliest deadline',batching:'Tuned batching',linear_q_mean:'Learned policy · mean of 3 runs'};
+ $('results').innerHTML=Object.entries(labels).map(([key,label])=>{const r=rows[key];return `<tr class="${key==='linear_q_mean'?'learned':''}"><td>${label}</td><td>${r.reward.toFixed(1)}</td><td>${(r.on_time_rate*100).toFixed(1)}%</td><td>${(r.completion_rate*100).toFixed(1)}%</td><td>${r.travel_per_delivery.toFixed(2)} ticks</td></tr>`}).join('');
+ $('benchmark-sub').textContent=DATA.results.test_days_per_scenario+' unseen shifts per scenario. Same demand for every policy. Replay shifts are separate from benchmark shifts.';
+}
+function stop(){clearInterval(timer);timer=null;$('play').textContent='Play'}
+$('play').onclick=()=>{if(timer){stop();return}if(tick===48)tick=0;$('play').textContent='Pause';timer=setInterval(()=>{tick++;render();if(tick>=48)stop()},500);render()};
+$('restart').onclick=()=>{stop();tick=0;render()};$('slider').oninput=()=>{stop();tick=+$('slider').value;render()};
+for(const id of ['scenario','seed'])$(id).onchange=()=>{stop();tick=0;render()};
+const s=DATA.results.summary.standard;$('headline').textContent=(s.linear_q_mean.on_time_rate*100).toFixed(1)+'% on time';$('headline-sub').textContent='Compared with '+(s.deadline.on_time_rate*100).toFixed(1)+'% for earliest-deadline dispatch. Average across 3 trained policies and '+DATA.results.test_days_per_scenario+' unseen shifts.';render();
+</script></body></html>
