@@ -1,0 +1,73 @@
+{
+  "config": {
+    "horizon": 60,
+    "cutoff": 44,
+    "demand_rate": 0.62,
+    "battery": 18,
+    "charge_rate": 3,
+    "capacity": 3,
+    "max_orders": 10,
+    "deadline_low": 10,
+    "deadline_high": 18,
+    "traffic_probability": 0.18,
+    "traffic_extra": 2
+  },
+  "replicas": [
+    101,
+    202,
+    303
+  ],
+  "selected": [
+    {
+      "seed": 101,
+      "episode": 3500,
+      "validation_reward": 25.890750000000004,
+      "gradient_updates": 51990
+    },
+    {
+      "seed": 202,
+      "episode": 3300,
+      "validation_reward": 38.71300000000001,
+      "gradient_updates": 51990
+    },
+    {
+      "seed": 303,
+      "episode": 3500,
+      "validation_reward": 44.03825,
+      "gradient_updates": 51990
+    }
+  ],
+  "demo_seed": 303,
+  "planner_batch": 2,
+  "planner_validation": {
+    "1": 77.72175000000001,
+    "2": 85.30050000000003,
+    "3": 82.30550000000002
+  },
+  "train_episodes": 1500,
+  "validation_days": 40,
+  "torch_version": "2.5.1+cpu",
+  "numpy_version": "2.3.5",
+  "algorithm": "Dueling Double DQN, masked targets, replay, Polyak target, guided exploration",
+  "reward_scale": 20,
+  "gamma": 0.97,
+  "learning_rate": 0.0003,
+  "replay_capacity": 30000,
+  "batch_size": 64,
+  "update_every_ticks": 4,
+  "warmup_transitions": 1024,
+  "target_tau": 0.01,
+  "refinement": {
+    "episodes_per_seed": 2000,
+    "learning_rate": 0.0001,
+    "epsilon_start": 0.25,
+    "epsilon_end": 0.05,
+    "training_seed_starts": [
+      600000,
+      650000,
+      700000
+    ],
+    "optimiser_and_replay_reset": true
+  },
+  "total_episodes_per_seed": 3500
+}

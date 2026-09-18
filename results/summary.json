@@ -1,0 +1,430 @@
+{
+  "config": {
+    "horizon": 48,
+    "arrival_cutoff": 36,
+    "arrival_probability": 0.38,
+    "capacity": 3,
+    "max_orders": 5,
+    "deadline_min": 9,
+    "deadline_max": 16,
+    "delivery_reward": 10.0,
+    "travel_cost": 0.35,
+    "late_cost": 0.7,
+    "unfinished_cost": 8.0
+  },
+  "training_episodes_per_seed": 3000,
+  "test_days_per_scenario": 300,
+  "validation_days": 80,
+  "training_seeds": [
+    11,
+    22,
+    33
+  ],
+  "validation": [
+    {
+      "training_seed": 11,
+      "reward": 112.76875000000004,
+      "checkpoint": 2750
+    },
+    {
+      "training_seed": 22,
+      "reward": 112.50187500000007,
+      "checkpoint": 2750
+    },
+    {
+      "training_seed": 33,
+      "reward": 112.24875000000006,
+      "checkpoint": 2750
+    }
+  ],
+  "selected_model_seed": 11,
+  "batching_threshold": 3,
+  "batching_validation": {
+    "1": 102.70250000000006,
+    "2": 99.04250000000005,
+    "3": 107.40500000000006
+  },
+  "summary": {
+    "standard": {
+      "nearest": {
+        "requests": 14.523333333333333,
+        "delivered": 13.293333333333333,
+        "on_time": 11.253333333333334,
+        "rejected": 1.07,
+        "travel_ticks": 43.75333333333333,
+        "total_delay": 6.576666666666667,
+        "reward": 102.8936666666667,
+        "unfinished": 0.16,
+        "on_time_rate": 0.7974085571515576,
+        "completion_rate": 0.9276636955590886,
+        "mean_delay": 0.4888854957678488,
+        "travel_per_delivery": 3.3369820567862365
+      },
+      "deadline": {
+        "requests": 14.523333333333333,
+        "delivered": 13.266666666666667,
+        "on_time": 11.286666666666667,
+        "rejected": 1.11,
+        "travel_ticks": 43.91,
+        "total_delay": 5.846666666666667,
+        "reward": 102.95150000000004,
+        "unfinished": 0.14666666666666667,
+        "on_time_rate": 0.801695682994411,
+        "completion_rate": 0.9258540220074916,
+        "mean_delay": 0.43714950681127146,
+        "travel_per_delivery": 3.3557824745057716
+      },
+      "batching": {
+        "requests": 14.523333333333333,
+        "delivered": 13.046666666666667,
+        "on_time": 10.473333333333333,
+        "rejected": 1.2666666666666666,
+        "travel_ticks": 38.876666666666665,
+        "total_delay": 8.1,
+        "reward": 99.12450000000004,
+        "unfinished": 0.21,
+        "on_time_rate": 0.7420197378189033,
+        "completion_rate": 0.9109952182052903,
+        "mean_delay": 0.6274611725420549,
+        "travel_per_delivery": 3.0070803548303546
+      },
+      "linear_q_11": {
+        "requests": 14.523333333333333,
+        "delivered": 13.81,
+        "on_time": 12.46,
+        "rejected": 0.64,
+        "travel_ticks": 41.17666666666667,
+        "total_delay": 6.16,
+        "reward": 113.3918333333334,
+        "unfinished": 0.07333333333333333,
+        "on_time_rate": 0.8695782839955845,
+        "completion_rate": 0.9586330166526864,
+        "mean_delay": 0.4326642457416451,
+        "travel_per_delivery": 3.027922083606681
+      },
+      "linear_q_22": {
+        "requests": 14.523333333333333,
+        "delivered": 13.806666666666667,
+        "on_time": 12.46,
+        "rejected": 0.63,
+        "travel_ticks": 40.89,
+        "total_delay": 6.626666666666667,
+        "reward": 113.05416666666672,
+        "unfinished": 0.08666666666666667,
+        "on_time_rate": 0.8692257931485116,
+        "completion_rate": 0.9585461634903686,
+        "mean_delay": 0.46801285301672296,
+        "travel_per_delivery": 3.0075209583158498
+      },
+      "linear_q_33": {
+        "requests": 14.523333333333333,
+        "delivered": 13.833333333333334,
+        "on_time": 12.5,
+        "rejected": 0.62,
+        "travel_ticks": 41.373333333333335,
+        "total_delay": 5.913333333333333,
+        "reward": 113.91100000000006,
+        "unfinished": 0.07,
+        "on_time_rate": 0.8718719008291629,
+        "completion_rate": 0.9601132616492356,
+        "mean_delay": 0.4131832904224545,
+        "travel_per_delivery": 3.03691864559589
+      },
+      "random": {
+        "requests": 14.523333333333333,
+        "delivered": 11.82,
+        "on_time": 7.916666666666667,
+        "rejected": 2.1133333333333333,
+        "travel_ticks": 36.29,
+        "total_delay": 19.66,
+        "reward": 67.91183333333335,
+        "unfinished": 0.59,
+        "on_time_rate": 0.5701065483831166,
+        "completion_rate": 0.8325549804008378,
+        "mean_delay": 1.7188411855029502,
+        "travel_per_delivery": 3.113899692083516
+      },
+      "linear_q_mean": {
+        "requests": 14.523333333333333,
+        "delivered": 13.816666666666668,
+        "on_time": 12.473333333333334,
+        "rejected": 0.63,
+        "travel_ticks": 41.14666666666667,
+        "total_delay": 6.233333333333333,
+        "reward": 113.4523333333334,
+        "unfinished": 0.07666666666666667,
+        "on_time_rate": 0.8702253259910863,
+        "completion_rate": 0.9590974805974302,
+        "mean_delay": 0.4379534630602742,
+        "travel_per_delivery": 3.02412056250614
+      }
+    },
+    "demand_surge": {
+      "nearest": {
+        "requests": 21.986666666666668,
+        "delivered": 15.166666666666666,
+        "on_time": 10.586666666666666,
+        "rejected": 6.343333333333334,
+        "travel_ticks": 46.81333333333333,
+        "total_delay": 17.323333333333334,
+        "reward": 67.64133333333336,
+        "unfinished": 0.4766666666666667,
+        "on_time_rate": 0.49549989978933817,
+        "completion_rate": 0.7022285207670618,
+        "mean_delay": 1.196186313772227,
+        "travel_per_delivery": 3.1195542658522535
+      },
+      "deadline": {
+        "requests": 21.986666666666668,
+        "delivered": 14.953333333333333,
+        "on_time": 10.17,
+        "rejected": 6.546666666666667,
+        "travel_ticks": 46.64,
+        "total_delay": 16.546666666666667,
+        "reward": 64.53633333333335,
+        "unfinished": 0.4866666666666667,
+        "on_time_rate": 0.4771903751142901,
+        "completion_rate": 0.6924755735282195,
+        "mean_delay": 1.1652788365601832,
+        "travel_per_delivery": 3.1536068843294074
+      },
+      "batching": {
+        "requests": 21.986666666666668,
+        "delivered": 15.03,
+        "on_time": 10.003333333333334,
+        "rejected": 6.513333333333334,
+        "travel_ticks": 43.17,
+        "total_delay": 16.656666666666666,
+        "reward": 67.15883333333336,
+        "unfinished": 0.44333333333333336,
+        "on_time_rate": 0.4684825306494535,
+        "completion_rate": 0.6959951127979009,
+        "mean_delay": 1.164084653364065,
+        "travel_per_delivery": 2.903502302708185
+      },
+      "linear_q_11": {
+        "requests": 21.986666666666668,
+        "delivered": 16.536666666666665,
+        "on_time": 13.696666666666667,
+        "rejected": 5.2,
+        "travel_ticks": 45.093333333333334,
+        "total_delay": 13.676666666666666,
+        "reward": 95.02200000000005,
+        "unfinished": 0.25,
+        "on_time_rate": 0.6352023191207198,
+        "completion_rate": 0.7642800280681017,
+        "mean_delay": 0.8453159901387456,
+        "travel_per_delivery": 2.7487978806682367
+      },
+      "linear_q_22": {
+        "requests": 21.986666666666668,
+        "delivered": 16.543333333333333,
+        "on_time": 13.766666666666667,
+        "rejected": 5.19,
+        "travel_ticks": 44.766666666666666,
+        "total_delay": 13.713333333333333,
+        "reward": 95.24233333333338,
+        "unfinished": 0.25333333333333335,
+        "on_time_rate": 0.6383324472744244,
+        "completion_rate": 0.7645799508548665,
+        "mean_delay": 0.8466442999151977,
+        "travel_per_delivery": 2.727349379765401
+      },
+      "linear_q_33": {
+        "requests": 21.986666666666668,
+        "delivered": 16.573333333333334,
+        "on_time": 13.783333333333333,
+        "rejected": 5.176666666666667,
+        "travel_ticks": 45.18666666666667,
+        "total_delay": 13.516666666666667,
+        "reward": 95.83600000000004,
+        "unfinished": 0.23666666666666666,
+        "on_time_rate": 0.6392845051600535,
+        "completion_rate": 0.7659768073538363,
+        "mean_delay": 0.834445715218161,
+        "travel_per_delivery": 2.7484347238445537
+      },
+      "random": {
+        "requests": 21.986666666666668,
+        "delivered": 12.766666666666667,
+        "on_time": 7.13,
+        "rejected": 8.206666666666667,
+        "travel_ticks": 37.846666666666664,
+        "total_delay": 31.506666666666668,
+        "reward": 15.017000000000007,
+        "unfinished": 1.0133333333333334,
+        "on_time_rate": 0.334898383197791,
+        "completion_rate": 0.5924823276377729,
+        "mean_delay": 2.582639250999545,
+        "travel_per_delivery": 3.0049626906318085
+      },
+      "linear_q_mean": {
+        "requests": 21.986666666666668,
+        "delivered": 16.551111111111112,
+        "on_time": 13.74888888888889,
+        "rejected": 5.188888888888889,
+        "travel_ticks": 45.01555555555556,
+        "total_delay": 13.635555555555555,
+        "reward": 95.36677777777781,
+        "unfinished": 0.2466666666666667,
+        "on_time_rate": 0.6376064238517326,
+        "completion_rate": 0.7649455954256016,
+        "mean_delay": 0.8421353350907014,
+        "travel_per_delivery": 2.741527328092731
+      }
+    },
+    "tight_deadlines": {
+      "nearest": {
+        "requests": 14.29,
+        "delivered": 13.103333333333333,
+        "on_time": 7.86,
+        "rejected": 1.04,
+        "travel_ticks": 43.79333333333334,
+        "total_delay": 22.406666666666666,
+        "reward": 89.83233333333337,
+        "unfinished": 0.14666666666666667,
+        "on_time_rate": 0.5843204613577645,
+        "completion_rate": 0.9309240872092365,
+        "mean_delay": 1.6578942187699928,
+        "travel_per_delivery": 3.4075103630602857
+      },
+      "deadline": {
+        "requests": 14.29,
+        "delivered": 13.08,
+        "on_time": 7.536666666666667,
+        "rejected": 1.0666666666666667,
+        "travel_ticks": 43.77,
+        "total_delay": 22.12,
+        "reward": 89.64683333333338,
+        "unfinished": 0.14333333333333334,
+        "on_time_rate": 0.5622844339370117,
+        "completion_rate": 0.9292458101629256,
+        "mean_delay": 1.6407826041061335,
+        "travel_per_delivery": 3.414468715380481
+      },
+      "batching": {
+        "requests": 14.29,
+        "delivered": 12.766666666666667,
+        "on_time": 6.59,
+        "rejected": 1.35,
+        "travel_ticks": 41.056666666666665,
+        "total_delay": 25.686666666666667,
+        "reward": 82.36183333333337,
+        "unfinished": 0.17333333333333334,
+        "on_time_rate": 0.4952382330755598,
+        "completion_rate": 0.9095977330029018,
+        "mean_delay": 1.9703858799152916,
+        "travel_per_delivery": 3.2690804427054427
+      },
+      "linear_q_11": {
+        "requests": 14.29,
+        "delivered": 13.52,
+        "on_time": 9.783333333333333,
+        "rejected": 0.7233333333333334,
+        "travel_ticks": 41.46666666666667,
+        "total_delay": 18.04,
+        "reward": 101.28033333333337,
+        "unfinished": 0.04666666666666667,
+        "on_time_rate": 0.7075590212671918,
+        "completion_rate": 0.9559522457309171,
+        "mean_delay": 1.283018031303635,
+        "travel_per_delivery": 3.136789052092845
+      },
+      "linear_q_22": {
+        "requests": 14.29,
+        "delivered": 13.506666666666666,
+        "on_time": 9.85,
+        "rejected": 0.7266666666666667,
+        "travel_ticks": 41.18666666666667,
+        "total_delay": 18.223333333333333,
+        "reward": 100.8816666666667,
+        "unfinished": 0.056666666666666664,
+        "on_time_rate": 0.7127367240110711,
+        "completion_rate": 0.9552466055105711,
+        "mean_delay": 1.3001009742321663,
+        "travel_per_delivery": 3.1192226521328688
+      },
+      "linear_q_33": {
+        "requests": 14.29,
+        "delivered": 13.503333333333334,
+        "on_time": 9.88,
+        "rejected": 0.7333333333333333,
+        "travel_ticks": 41.64,
+        "total_delay": 17.696666666666665,
+        "reward": 101.09000000000003,
+        "unfinished": 0.05333333333333334,
+        "on_time_rate": 0.7156617970317324,
+        "completion_rate": 0.955088117756495,
+        "mean_delay": 1.258162311587621,
+        "travel_per_delivery": 3.15585608364517
+      },
+      "random": {
+        "requests": 14.29,
+        "delivered": 11.596666666666666,
+        "on_time": 4.873333333333333,
+        "rejected": 2.1033333333333335,
+        "travel_ticks": 36.413333333333334,
+        "total_delay": 43.303333333333335,
+        "reward": 47.36366666666669,
+        "unfinished": 0.59,
+        "on_time_rate": 0.37268879271245,
+        "completion_rate": 0.8358150224270329,
+        "mean_delay": 3.728442094942095,
+        "travel_per_delivery": 3.1924093915343916
+      },
+      "linear_q_mean": {
+        "requests": 14.29,
+        "delivered": 13.51,
+        "on_time": 9.837777777777779,
+        "rejected": 0.7277777777777779,
+        "travel_ticks": 41.431111111111115,
+        "total_delay": 17.986666666666668,
+        "reward": 101.08400000000005,
+        "unfinished": 0.052222222222222225,
+        "on_time_rate": 0.7119858474366652,
+        "completion_rate": 0.9554289896659944,
+        "mean_delay": 1.2804271057078074,
+        "travel_per_delivery": 3.1372892626236273
+      }
+    }
+  },
+  "comparisons": {
+    "standard": {
+      "mean_reward_difference": 14.327833333333341,
+      "paired_scenario_bootstrap_95_ci": [
+        11.471477777777782,
+        17.297918055555563
+      ],
+      "training_replica_mean_rewards": [
+        113.3918333333334,
+        113.05416666666672,
+        113.91100000000006
+      ]
+    },
+    "demand_surge": {
+      "mean_reward_difference": 28.20794444444446,
+      "paired_scenario_bootstrap_95_ci": [
+        23.66900555555557,
+        32.87052222222224
+      ],
+      "training_replica_mean_rewards": [
+        95.02200000000005,
+        95.24233333333338,
+        95.83600000000004
+      ]
+    },
+    "tight_deadlines": {
+      "mean_reward_difference": 18.72216666666667,
+      "paired_scenario_bootstrap_95_ci": [
+        15.219675000000004,
+        22.360925000000005
+      ],
+      "training_replica_mean_rewards": [
+        101.28033333333337,
+        100.8816666666667,
+        101.09000000000003
+      ]
+    }
+  },
+  "notes": "Synthetic data only. CIs resample paired scenarios after averaging three trained policies; they are not full training-uncertainty intervals."
+}
